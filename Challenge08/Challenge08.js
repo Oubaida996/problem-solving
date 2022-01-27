@@ -30,7 +30,7 @@ const customerAndAge = (obj) => {
     // write your code here
     let arr = [];
     for (let prop in obj) {
-        arr.push(`Customer Name :${property} , Age :${obj[prop]}`);
+        arr.push(`Customer Name :${prop} , Age :${obj[prop]}`);
     }
     return arr;
 
@@ -62,10 +62,9 @@ const customerAndAge = (obj) => {
 const getEntries = (obj) => {
     // write your code here
     let arr = [];
-    for ([key, value] of Object.entries(recipeInfo)) {
+    for (const [key, value] of Object.entries(obj)) {
         arr.push(`${key}: ${value}`);
         //console.log(`${key}: ${value}`);
-
     }
     return arr;
 };
@@ -109,7 +108,20 @@ const getInfo = (arr) => {
     let studentsName = [];
     // write your code here
 
+    arr.forEach(element => {
+        coursesName.push(element.course);
+        element.Students.forEach(item => { // for students Array ex: Students: ['Oli', 'Gisselle', 'Pru'],
+            studentsName.push(item);
+        });
+
+
+
+
+    });
+    // console.log(coursesName, studentsName.length);
     return { coursesName, studentsName };
+
+
 };
 
 //  ------------------------------------------------------------------------------------------------------
@@ -132,6 +144,30 @@ const getInfo = (arr) => {
 
 const getStudents = (arr) => {
     // write your code here
+
+    let result = [];
+
+    arr.forEach(input => {
+        courses.forEach(course => {
+            course.Students.forEach(std => {
+                if (std == input) {
+                    result.push({ Student: input, course: course.course });
+
+
+                    //console.log(std);
+                } else {
+                    // console.log("sssss");
+                }
+
+            });
+
+        });
+
+
+    });
+    console.log(result);
+    return result;
+
 
 };
 
