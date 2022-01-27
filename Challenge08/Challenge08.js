@@ -28,6 +28,12 @@
 
 const customerAndAge = (obj) => {
     // write your code here
+    let arr = [];
+    for (let prop in obj) {
+        arr.push(`Customer Name :${property} , Age :${obj[prop]}`);
+    }
+    return arr;
+
 };
 
 // -------------------------------------------------------------------------------------------------------
@@ -55,6 +61,13 @@ const customerAndAge = (obj) => {
 
 const getEntries = (obj) => {
     // write your code here
+    let arr = [];
+    for ([key, value] of Object.entries(recipeInfo)) {
+        arr.push(`${key}: ${value}`);
+        //console.log(`${key}: ${value}`);
+
+    }
+    return arr;
 };
 
 // -------------------------------------------------------------------------------------------------------
