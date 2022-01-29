@@ -136,8 +136,45 @@ const cvFormatter = (arr) => {
 // ------------------------
 const applicationsStatics = (arr) => {
     // write your code here
+    // console.log(arr);
+    var rejectedApplicants = 0,
+        python_Devs = 0,
+        javaScript_Devs = 0,
+        dotNet_Devs = 0,
+        java_Devs = 0,
+        totalApplicants = 0;
+    for (let i = 0; i < arr.length; i++) {
+        totalApplicants++;
+        if (arr[i].tech === "JS") {
+            javaScript_Devs++;
+        }
+        if (arr[i].tech === ".Net") {
+            dotNet_Devs++;
+        }
+        if (arr[i].tech === "Java") {
+            java_Devs++;
+        }
+        if (arr[i].tech === "Python") {
+            python_Devs++;
+        }
 
+        if (
+            (arr[i].yearsOfExperience <= 1 || (arr[i].firstName == "" &&
+                arr[i].lastName == ""))
 
+        ) {
+            // console.log(arr[i], "test");
+            rejectedApplicants++;
+        }
+    }
+    return {
+        python_Devs: python_Devs,
+        javaScript_Devs: javaScript_Devs,
+        dotNet_Devs: dotNet_Devs,
+        java_Devs: java_Devs,
+        totalApplicants: totalApplicants,
+        rejectedApplicants: rejectedApplicants,
+    };
 };
 
 // 4) ---------------------
@@ -245,13 +282,12 @@ const classesAvg = (data) => {
     for (let i = 0; i < data.grades.length; i++) {
         for (let j = 0; j < data.grades[i].classes.length; j++) {
             const average = (array) => array.reduce((a, b) => a + b) / array.length;
-            data.grades[i].classes[j].avg = Math.floor(average(data.grades[i].classes[j].classScores));
-
-
+            data.grades[i].classes[j].avg = Math.floor(
+                average(data.grades[i].classes[j].classScores)
+            );
         }
     }
     return data;
-
 };
 
 module.exports = { objLat, cvFormatter, applicationsStatics, classesAvg };
